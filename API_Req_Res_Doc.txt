@@ -1,0 +1,163 @@
+//***** Create USER *******************
+API : http://localhost:7000/api/register
+METHOD : POST
+Parameter :
+{
+	"name" : "saikrishna",
+	"username" : "saikrishna",
+   	"password" : "123456",
+   	"email" : "saikrishna.nelavalli@gmail.com@gmail.com",
+   	"address" : {
+   		"fullAddress"  :"BTM, Bangalore"
+   	},
+   	"contactNumbers" : {
+   		"mobile" : "9000333105"
+   	}
+
+}
+
+//***** LOGIN USER *******************
+API : http://localhost:7000/api/login
+METHOD : POST
+Parameter :
+{
+	"username" : "saikrishna",
+   	"password" : "123456"
+}
+
+
+//**************************************
+API : http://localhost:7000/api/restaurantCreation
+Metohd : POST
+Parameter :
+
+{
+	"action" : "NEW",
+	"data" : {
+    "name": "aadhavana family restaurent",
+    "email" : "aadhavana@gmail.com",
+    "address" :{
+        "fullAddress" : "BTM,Bangalore",
+        "city" : "Bangalore",
+        "pincode" :  "560076"
+    },
+    "status" : "NEW",
+    "contactNumbers" : {
+        "mobile" : "9000333105",
+        "landLine" :  "9000333105"
+    },
+    "workingHours" :{
+        "open" : "9am",
+        "close" : "11pm"
+    },
+    "images" : [ "http://res.cloudinary.com/symplocus/image/upload/v1512320171/Big_03_rcg7zl.jpg"],
+    "ownerId" : "5a23c6bcb8a87c4fa596876f",
+    "ownerName" : "sai"
+  }
+}
+
+// Add NEW TABLE *************************
+API : http://localhost:7000/api/tableAssign
+METHOD : POST
+{
+	"action" : "NEW",
+	"data" : {
+    "restaurantId" : "5a242ed4b8a87c4fa5968770",
+    "tableNo" : "12",
+    "capacity" : 2,
+    "availability" : "FREE"
+	}
+}
+
+//get Booking by range***********************************
+API : http://localhost:7000/api/bookingDetails
+METHOD : POST
+{
+	"restaurantId" : "5a242ed4b8a87c4fa5968770",
+    "bookingStartTime" : "2017-09-11T15:53:51.402Z",
+    "bookingEndTime" : "2017-09-11T20:53:51.402Z"
+}
+
+
+//search Restaurants ****************************************
+
+API : http://localhost:7000/api/searchRestaurants
+METHOD : POST
+{
+	"name" : "aadhavana family restaurent",
+	"location" : "Bangalore",
+	"menuName" : "vada"
+}
+
+//search Table *******************************************
+API : http://localhost:7000/api/searchTable
+METHOD : POST
+{
+	"restaurantId" : "5a242ed4b8a87c4fa5968770",
+	"capacity" : 5,
+	"availability" : "FREE"
+}
+
+//Book a Table ******************************
+API : http://localhost:7000/api/tableBooking
+METHOD : POST
+Parameter :
+{
+	"restaurantId" : "5a242ed4b8a87c4fa5968770",
+	"tableNo" : "A1",
+	"availability" : "RESERVED",
+	"userId" :  "59b36c0f810f134d307beeec",
+	"userName" :  "Sai",
+    "email" :  "sai@gmail.com",
+    "mobile" : "1234567890",
+    "bookingStartTime" : "2017-09-11T17:53:51.402Z",
+    "bookingEndTime" : "2017-09-11T19:53:51.402Z"
+}
+
+//Write Review **************************************
+API : http://localhost:7000/api/writeReview
+METHOD : POST
+{
+	"restaurantId" : "5a242ed4b8a87c4fa5968770",
+    "userId" : "59b36c0f810f134d307beeec",
+    "reviewText" : "Awesome",
+    "reviewerName" : "sagar",
+    "rating" : 8
+}
+
+//Add menu **********************************************
+http://localhost:7000/api/menuAction
+Method : POST
+{
+	"restaurantID" : "5a242ed4b8a87c4fa5968770",
+	"dishName" :  "vada pav",
+    "MRP" : "20",
+    "description" :  "welcome"
+    "action" : "ADD"
+}
+
+
+//Place Order***************************
+http://localhost:7000/api/order
+Method : POST
+
+{
+    "orderStatus": "NEW",
+    "orderDetails" : {
+      "from" : {
+          "userName" : "sai"
+      },
+      "to" : {
+          "restaurantID" : "5a242ed4b8a87c4fa5968770",
+          "restaurantName" : "aadhavana family restaurant",
+          "tableNo" :  "12"
+      }
+    },
+    "items": [{
+        "item" : "idly vada",
+        "MRP" : "20",
+        "quantity" :  2,
+        "totalPricePerItem": 40
+    }],
+    "action" : "NEW"
+}

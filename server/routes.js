@@ -5,19 +5,20 @@ var requireDir = require('require-dir');
 var controllers = requireDir('./controller/api');
 
 module.exports.register = function( router ) {
-    // router.route( '/writeReview' ).post(controllers.reviewsAPI.writeReview );
+
 
     router.route('/register').post(controllers.user.createUser);
-    router.route('/login').post(controllers.userAPI.loginUser);
-    //
-    // router.route('/entityRestaurantsAction').post(controllers.restaurantsAPI.entityRestaurantsAction);
-    // router.route('/searchRestaurants').post(controllers.restaurantsAPI.searchRestaurants);
-    // router.route('/menuAction').post(controllers.restaurantsAPI.menuAction);
-    //
-    // router.route('/tableActions').post(controllers.tablesAPI.tableActions);
-    // router.route('/bookingTable').post(controllers.tablesAPI.bookingTable);
-    // router.route('/searchTable').post(controllers.tablesAPI.searchTable);
-    // router.route('/bookingDetails').post(controllers.tablesAPI.bookingDetails);
+    router.route('/login').post(controllers.user.loginUser);
+    router.route('/restaurantCreation').post(controllers.restaurants.restaurantCreation);
 
-    // router.route('/ordersAction').post(controllers.ordersAPI.ordersAction);
+    router.route( '/writeReview' ).post(controllers.reviews.writeReview );
+    router.route('/searchRestaurants').post(controllers.restaurants.searchRestaurants);
+    router.route('/menuAction').post(controllers.restaurants.menuAction);
+
+    router.route('/tableAssign').post(controllers.tables.tableAssign);
+    router.route('/tableBooking').post(controllers.tables.tableBooking);
+    router.route('/searchTable').post(controllers.tables.searchTable);
+    router.route('/bookingDetails').post(controllers.tables.bookingDetails);
+
+    router.route('/order').post(controllers.orders.order);
 };
